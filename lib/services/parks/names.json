@@ -1,0 +1,40 @@
+{
+  "DisneylandParisMagicKingdom": [
+    "Disneyland Paris"
+  ],
+  "DisneylandParisWaltDisneyStudios": [
+    "Walt Disney Studios",
+    "Walt Disney Studios Paris"
+  ],
+  "DisneylandResortCaliforniaAdventure": [
+    "California Adventure",
+    "Disney California Adventure"
+  ],
+  "DisneylandResortMagicKingdom": [
+    "Disneyland"
+  ],
+  "ShanghaiDisneyResortMagicKingdom": [
+    "Shanghai Disneyland"
+  ],
+  "TokyoDisneyResortDisneySea": [
+    "Tokyo DisneySea"
+  ],
+  "TokyoDisneyResortMagicKingdom": [
+    "Tokyo Disneyland"
+  ],
+  "WaltDisneyWorldAnimalKingdom": [
+    "Animal Kingdom",
+    "Disney's Animal Kingdom"
+  ],
+  "WaltDisneyWorldEpcot": [
+    "Epcot",
+    "Epcot Center"
+  ],
+  "WaltDisneyWorldHollywoodStudios": [
+    "Disney's Hollywood Studios",
+    "Hollywood Studios"
+  ],
+  "WaltDisneyWorldMagicKingdom": [
+    "Magic Kingdom"
+  ]
+}
