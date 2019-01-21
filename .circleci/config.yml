@@ -1,0 +1,80 @@
+version: 2.1
+
+commands:
+  restore-deps:
+    steps:
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+executors:
+  default-node:
+    docker:
+      - image: circleci/node:8.15
+    environment:
+      TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+
+jobs:
+  deploy:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run: apt-get install -y sudo
+      - run: pip install yq
+      - run: |
+          echo $GCLOUD_SERVICE_KEY | sudo gcloud auth activate-service-account --key-file=-
+          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+          gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+      - run: bin/deploy.sh
+
+  lint:
+    executor: default-node
+    steps:
+      - checkout
+      - restore-deps
+      - run: npm run lint
+
+  refresh-deps:
+    executor: default-node
+    steps:
+      - checkout
+      - restore-deps
+      - run: npm install
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+  shellcheck:
+    docker:
+      - image: nlknguyen/alpine-shellcheck
+    steps:
+      - checkout
+      - run: find bin -type f -name '*.sh' | xargs shellcheck
+
+  test:
+    executor: default-node
+    steps:
+      - checkout
+      - restore-deps
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - deploy:
+          requires:
+            - lint
+            - shellcheck
+            - test
+          filters:
+            branches:
+              only: master
+      - lint:
+          requires:
+            - refresh-deps
+      - refresh-deps
+      - shellcheck
+      - test:
+          requires:
+            - refresh-deps

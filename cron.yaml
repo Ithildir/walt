@@ -1,0 +1,3 @@
+cron:
+  - schedule: every 24 hours
+    url: /tasks/refresh_entities

@@ -1,0 +1,8 @@
+#!include:.gitignore
+
+.circleci/
+.eslintrc.json
+.gcloudignore
+.git/
+.gitignore
+.prettierrc
