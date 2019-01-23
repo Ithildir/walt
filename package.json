@@ -11,7 +11,7 @@
   "author": "Andrea Di Giorgi",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "nodemon --exec \"node -r dotenv/config\" lib/index.js",
+    "dev": "nodemon --exec \"node --inspect -r dotenv/config\" lib/index.js",
     "format": "jsonsort ./data ./eslintrc.json ./prettierrc && sort-package-json && prettier --write \"**/*.yaml\" && eslint --fix ./lib",
     "lint": "prettier --check \"**/*.yaml\" && eslint ./lib",
     "start": "node ./lib/index.js",

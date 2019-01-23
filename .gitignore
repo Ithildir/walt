@@ -1,3 +1,2 @@
-/app.deploy*.yml
 /node_modules/
 /walt-bot-service-account.json

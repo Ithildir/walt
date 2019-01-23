@@ -1,6 +1,7 @@
 #!include:.gitignore
 
 .circleci/
+.env
 .eslintrc.json
 .gcloudignore
 .git/
