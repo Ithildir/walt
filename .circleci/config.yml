@@ -27,10 +27,8 @@ jobs:
       - run:
           name: Inject environment secrets into app.yaml
           command: |
-            yq write --inplace app.yaml env_variables.REDIS_DB ${REDIS_DB}
-            yq write --inplace app.yaml env_variables.REDIS_HOST ${REDIS_HOST}
-            yq write --inplace app.yaml env_variables.REDIS_PASSWORD ${REDIS_PASSWORD}
-            yq write --inplace app.yaml env_variables.REDIS_PORT ${REDIS_PORT}
+            yq write --inplace app.yaml env_variables.DIALOGFLOW_PASSWORD ${DIALOGFLOW_PASSWORD}
+            yq write --inplace app.yaml env_variables.DIALOGFLOW_USER ${DIALOGFLOW_USER}
       - run:
             name: Authenticate gcloud
             command: |

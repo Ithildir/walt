@@ -1,4 +1,4 @@
 runtime: nodejs10
-instance_class: F4_1G
+instance_class: F4
 env_variables:
   LOG_LEVEL: 'info'

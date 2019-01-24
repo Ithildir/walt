@@ -11,7 +11,7 @@
   "author": "Andrea Di Giorgi",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "nodemon --exec \"node --inspect -r dotenv/config\" lib/index.js",
+    "dev": "GOOGLE_APPLICATION_CREDENTIALS=dev-service-account.json nodemon",
     "format": "jsonsort ./data ./eslintrc.json ./prettierrc && sort-package-json && prettier --write \"**/*.yaml\" && eslint --fix ./lib",
     "lint": "prettier --check \"**/*.yaml\" && eslint ./lib",
     "start": "node ./lib/index.js",
@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@google-cloud/logging-winston": "^0.10.2",
-    "@google-cloud/storage": "^2.3.4",
     "actions-on-google": "^2.5.0",
     "bluebird": "^3.5.3",
     "dialogflow": "^0.7.0",
@@ -28,7 +27,6 @@
     "express-basic-auth": "^1.1.6",
     "express-promise-router": "^3.0.3",
     "helmet": "^3.15.0",
-    "ioredis": "^4.5.1",
     "node-http-error": "^2.0.0",
     "snake-case": "^2.1.0",
     "themeparks": "^5.0.0",
@@ -36,7 +34,6 @@
     "winston": "^3.1.0"
   },
   "devDependencies": {
-    "dotenv": "^6.2.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.6.0",

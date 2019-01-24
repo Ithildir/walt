@@ -1,7 +1,4 @@
 cron:
-  - description: 'refresh Redis cache'
-    schedule: every 10 minutes
-    url: /cron/refresh_cache
-  - description: 'refresh Dialogflow entities'
+  - description: 'Refresh Dialogflow Entities'
     schedule: every 24 hours
     url: /cron/refresh_entities
