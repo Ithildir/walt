@@ -1,8 +1,7 @@
 const { Suggestion } = require('dialogflow-fulfillment');
-const { getMessage } = require('../../language');
-const { getParkNames } = require('../../services/parks');
+const themeparks = require('themeparks');
 
-function requirePark(agent, fn) {
+function requirePark (agent, fn) {
   let parkId = agent.parameters.park;
 
   if (!parkId) {
@@ -14,13 +13,11 @@ function requirePark(agent, fn) {
 
   if (parkId) {
     agent.context.set('park', 10, { parkId });
-    fn(parkId);
-  } else {
-    agent.add(getMessage('ask-what-park'));
-    agent.add(getParkNames().map(name => new Suggestion(name)));
+    return fn(parkId);
   }
+
+  agent.add('What park?');
+  agent.add(themeparks.AllParks.map(park => new Suggestion(park.Name)));
 }
 
-module.exports = {
-  requirePark,
-};
+module.exports = requirePark;

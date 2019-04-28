@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "api/*/index.js",
+      "use": "@now/node"
+    }
+  ],
+  "env": {
+    "INSTRUMENTAL_API_KEY": "@walt-instrumental-api-key",
+    "PASSWORD": "@walt-password",
+    "REDIS_HOST": "@walt-redis-host",
+    "REDIS_PASSWORD": "@walt-redis-password",
+    "REDIS_PORT": "@walt-redis-port",
+    "USERNAME": "@walt-username"
+  },
+  "version": 2
+}
