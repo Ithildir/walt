@@ -20,4 +20,6 @@ function requirePark (agent, fn) {
   agent.add(themeparks.AllParks.map(park => new Suggestion(park.Name)));
 }
 
-module.exports = requirePark;
+module.exports = {
+  requirePark,
+};

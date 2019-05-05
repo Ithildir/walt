@@ -1,21 +1,15 @@
-const requirePark = require('../requirePark');
+const { requirePark } = require('../helpers');
+const cache = require('../../cache');
 
 function getParkCrowd (agent) {
   return requirePark(agent, async (parkId) => {
-    /*
-    const park = new themeparks.Parks[parkId]();
+    const avgWaitTime = await cache.get(`parks:${parkId}:avg_wait_time`);
 
-    const rides = await park.GetWaitTimes();
-
-    console.log(rides);
-
-    const activeRides = rides.filter(({ active }) => active);
-    const totalWaitTime = activeRides.reduce((acc, { waitTime }) => acc + waitTime, 0);
-
-    console.log(totalWaitTime);
-
-    agent.add(`The average wait time is ${Math.floor(totalWaitTime / activeRides.length)} minutes.`);
-    */
+    if (avgWaitTime) {
+      agent.add(`The average wait time is ${avgWaitTime} minutes.`);
+    } else {
+      agent.add('I\'m sorry, I have no idea!');
+    }
   });
 }
 
